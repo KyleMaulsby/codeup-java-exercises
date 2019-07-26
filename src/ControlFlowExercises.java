@@ -57,7 +57,7 @@ public class ControlFlowExercises {
 //            System.out.println("Would you like to keep going?");
 //            response = scanner.next();
 //            System.out.println(response);
-//        }while(response == "yes");
+//        }while(response.equalsIgnorecase("yes"));
 
 
     }
