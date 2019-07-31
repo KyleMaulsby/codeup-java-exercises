@@ -1,7 +1,7 @@
 class Person {
-    private String name;
-    public Person(String name){
-        this.name = name;
+    public String name;
+    public Person(){
+//        this.name = name;
     }
     public String getName(){
         return this.name;
@@ -13,7 +13,7 @@ class Person {
         System.out.println("Hello "+this.name);
     }
     public static void main(String[] args) {
-        Person p1 = new Person("kyle");
+        Person p1 = new Person();
         System.out.println(p1.getName());
         p1.sayHello();
         p1.setName("Jade");
