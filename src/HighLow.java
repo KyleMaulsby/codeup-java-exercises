@@ -38,7 +38,7 @@ public class HighLow {
             System.out.println("What do you do?(Fight/Potion("+character.Potion+")/Run)");
             String response = scanner.nextLine();
             response(response);
-        }while(character.baddyhp1>0);
+        }while(character.baddyhp1>0||character.gameoverValue==1);
         System.out.println("");
     }
     public static void response(String input){
@@ -55,8 +55,9 @@ public class HighLow {
                 if(character.playerhp<=0){
                     character.gameoverValue = 1;
                     System.out.println("Gameover");
+                }else {
+                    System.out.println("Player HP: " + character.playerhp + "\nEnemy HP: " + character.baddyhp1);
                 }
-                System.out.println("Player HP: "+character.playerhp+"\nEnemy HP: "+character.baddyhp1);
             }
         }  else if(input.equalsIgnoreCase("Potion")){
             if(character.Potion > 0) {
@@ -67,6 +68,10 @@ public class HighLow {
             }else{
                 System.out.println("You ran out of potions. Uh Oh!  While fumbling through your bag your foe strikes you dealing "+badDmg+" damage.");
                 character.playerhp -=badDmg;
+                if(character.playerhp<=0){
+                    character.gameoverValue = 1;
+                    System.out.println("Gameover");
+                }
             }
             System.out.println("Player HP: "+character.playerhp+"\nEnemy HP: "+character.baddyhp1);
         } else if(input.equalsIgnoreCase("Run")){
@@ -77,7 +82,12 @@ public class HighLow {
             }else{
                 character.playerhp -=badDmg;
                 System.out.println("You tried to run, but you tripped and fell after they hit you in the back taking "+badDmg+" damage.");
-                System.out.println("Player HP: "+character.playerhp+"\nEnemy HP: "+character.baddyhp1);
+                if(character.playerhp<=0){
+                    character.gameoverValue = 1;
+                    System.out.println("Gameover");
+                }else {
+                    System.out.println("Player HP: " + character.playerhp + "\nEnemy HP: " + character.baddyhp1);
+                }
             }
         }
     }
